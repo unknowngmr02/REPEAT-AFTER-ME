@@ -3,6 +3,39 @@ var user_pattern = [];
 var genrated_pattern =[];
 var result = true;
 
+function playsound(color) {
+    switch (color) {
+        case "blue":
+            var audio1 = new Audio("blue.mp3");
+            audio1.play();
+         break;   
+        case "red":
+            var audio1 = new Audio("red.mp3");
+            audio1.play();
+         break;
+        case "yellow":
+            var audio1 = new Audio("yellow.mp3");
+            audio1.play();
+         break;
+        case "green":
+            var audio1 = new Audio("green.mp3");
+            audio1.play();  
+         break;
+       default:
+        console.log("sometihng unexpected happended");
+    }
+}
+
+function animate(butn) {
+    $("."+butn).addClass("pressed");
+    setTimeout(function() {$("."+butn).removeClass("pressed");},100);
+}
+
+function play(color) {
+    animate(color);
+    playsound(color);
+}
+
 $("body").keypress(next_level);
 
 function next_level() {
@@ -12,8 +45,11 @@ function next_level() {
       var random_number = Math.floor(nun*4);
       var random_color = (buttoncolors[random_number]);
       genrated_pattern.push(random_color);
-      playsound(random_color);
-      animate(random_color);
+      for (let y = 0; y<genrated_pattern.length; y++) {
+       setTimeout(function() {
+             play(genrated_pattern[y]);
+         },500*y);
+      }
       for ( var l = 0; l< genrated_pattern.length; l++ ) {
       $("#level-title").text("level "+(l+1));
     }
@@ -49,30 +85,3 @@ $(".btn").click(function(){
 
 
 
-function playsound(color) {
-    switch (color) {
-        case "blue":
-            var audio1 = new Audio("blue.mp3");
-            audio1.play();
-         break;   
-        case "red":
-            var audio1 = new Audio("red.mp3");
-            audio1.play();
-         break;
-        case "yellow":
-            var audio1 = new Audio("yellow.mp3");
-            audio1.play();
-         break;
-        case "green":
-            var audio1 = new Audio("green.mp3");
-            audio1.play();  
-         break;
-       default:
-        console.log("sometihng unexpected happended");
-    }
-}
-
-function animate(butn) {
-    $("."+butn).addClass("pressed");
-    setTimeout(function() {$("."+butn).removeClass("pressed");},150);
-}
