@@ -36,7 +36,7 @@ function play(color) {
     playsound(color);
 }
 
-$("body").keypress(next_level);
+$(".start").click(next_level);
 
 function next_level() {
       if(result===true) {
@@ -54,6 +54,7 @@ function next_level() {
       $("#level-title").text("level "+(l+1));
     }
       }
+    $(".temp").addClass("throw");
 }
 
 function next_sequence() {
