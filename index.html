@@ -1,48 +1,79 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>pui pui game</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JCECEB College Predictor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 80%;
+      max-width: 500px;
+    }
+  </style>
 </head>
-
 <body>
-  <h1 id="level-title">Press START to start</h1>
-  <div id="start" class="temp">
-    <div type="button" class="start">START</div>
-  </div>
-  <div class="container">
-    <div class="row">
+  <h1>JCECEB Government College Predictor</h1>
+  <label for="rank">Enter your JCECEB CRL Rank:</label>
+  <input type="number" id="rank" placeholder="e.g. 1200" />
+  <button onclick="predictCollege()">Predict College</button>
 
-      <div type="button" id="green" class="btn green">
-        
-      </div>
+  <div class="result" id="result"></div>
 
-      <div type="button" id="red" class="btn red">
+  <script>
+    function predictCollege() {
+      const rank = parseInt(document.getElementById("rank").value);
+      const resultDiv = document.getElementById("result");
+      let message = "";
 
-      </div>
-    </div>
+      if (rank > 0 && rank <= 200) {
+        message = "Your Possible College is <strong>BIT Sindri</strong><br>Branch: CSE & IT";
+      } else if (rank <= 500) {
+        message = "Your Possible College is <strong>BIT Sindri</strong><br>Branch: Cyber Security & ECE";
+      } else if (rank <= 600) {
+        message = "Your Possible College is <strong>BIT Sindri</strong><br>Branch: ECE & EE";
+      } else if (rank <= 800) {
+        message = "Your Possible College is <strong>BIT Sindri</strong><br>Branch: MECH & METAL";
+      } else if (rank <= 1000) {
+        message = "Your Possible College is <strong>BIT Sindri</strong><br>Branch: METAL & CHEM";
+      } else if (rank <= 1200) {
+        message = "Your Possible College is <strong>BIT Sindri</strong><br>Branch: CHEM & CIVIL";
+      } else if (rank <= 1500) {
+        message = "Your Possible College is <strong>BIT Sindri</strong><br>Branch: CIVIL & PRODUCTION";
+      } else if (rank <= 1700) {
+        message = "Your Possible College is <strong>GEC Palamu</strong><br>Branch: CSE";
+      } else if (rank <= 2100) {
+        message = "Your Possible College is <strong>GEC Palamu</strong><br>Branch: EE";
+      } else if (rank <= 2700) {
+        message = "Your Possible College is <strong>GEC Palamu</strong><br>Branch: MECH";
+      } else if (rank <= 3200) {
+        message = "Your Possible College is <strong>GEC Palamu</strong><br>Branch: CIVIL";
+      } else {
+        message = "You may not be able to find a <strong>Government College in Jharkhand</strong>.<br>You may consider PPP colleges in Jharkhand.";
+      }
 
-    <div class="row">
-
-      <div type="button" id="yellow" class="btn yellow">
-
-      </div>
-      <div type="button" id="blue" class="btn blue">
-
-      </div>
-
-    </div>
-
-  </div>
-  <a href="index.html" style="  text-decoration: none;">
-    <div class="retry"> Retry</div>
-  </a>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
-<script src="game.js"></script>
+      resultDiv.innerHTML = message;
+    }
+  </script>
 </body>
-
 </html>
